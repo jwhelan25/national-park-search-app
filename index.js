@@ -1,5 +1,7 @@
 'use strict';
 
+const apiKey = 'Iolbzt3EEKrNe6ZZRBsa3BPUFP2GCIzENWCBI51W'
+
 function start(){
     watchForm()
 }
@@ -21,7 +23,7 @@ function watchForm() {
         renderError(`State cannot be blank`)
         throw new Error("State cannot be blank")
     }else{
-        // getParks(numRet,StateI)
+    getParks(numRet,stateI)
     }}
 
     function renderError (err){
@@ -29,7 +31,19 @@ function watchForm() {
     }
 
     function getParks (maxNumber,stateInput){
+        fetch(`https://developer.nps.gov/api/v1/parks?stateCode=${stateInput}&api_key=${apiKey}&limit=${maxNumber}`)
+          .then(response => response.json())
+          .then(responseJson => displayResults(responseJson))
+          .catch(error => alert('Something went wrong. Try again later.'))
+      }
 
+    function displayResults(response){
+        $('.result').empty()
+        let resultReturn = ``
+        for (let i=0; i<response.data.length; i++){
+            resultReturn += `<h2>${response.data[i].fullName}</h2><p>${response.data[i].description}</p><p>URL: ${response.data[i].url}</p><br>`
+        }
+        $('.results').html(resultReturn)
     }
 
 
