@@ -3,13 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>title</title>
+    <title>NPS Park Searcher</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    
+    <div>
+        <h1>National Parks Search</h1>
 
-    
+        <form>
+            <label for="state">State you would like to visit:</label>
+            <input id="state" type="text" name="state you want to visit"></input>
+            <label for="numberOfResults">Maximum Number of results (default is 10):</label>
+            <input id="numberOfResults" type="number" name="maximum number of results returned"></input>
+            <input type="submit" value="search for parks">
+        </form>
+        <br>
+        <br>
+
+        <section class="errorsec">
+        </section>
+
+        <section class="results">
+        </section>
+
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="index.js"></script>
 </body>
